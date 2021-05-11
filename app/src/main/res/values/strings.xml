@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">StockMonk</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_index_position">Index Position</string>
+    <string name="menu_intraday">Intraday</string>
+    <string name="menu_traders_lounge">Knowledge base</string>
+    <string name="menu_mission_monk">Mission Monk</string>
+    <string name="menu_break_out">Break Out</string>
+    <string name="menu_premium">Premium</string>
+    <string name="menu_contact_us">Contact us</string>
+    <string name="menu_logout">Logout</string>
+    <string name="why">why</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_traders_lounge"
+            android:icon="@drawable/ic_trader"
+            android:title="@string/menu_traders_lounge" />
+        <item
+            android:id="@+id/nav_intraday"
+            android:icon="@drawable/ic_intraday"
+            android:title="@string/menu_intraday" />
+        <item
+            android:id="@+id/nav_index"
+            android:icon="@drawable/ic_index"
+            android:title="@string/menu_index_position" />
+        <item
+            android:id="@+id/nav_mission_monk"
+            android:icon="@drawable/mission_monk"
+            android:title="@string/menu_mission_monk" />
+        <item
+            android:id="@+id/nav_break_out"
+            android:icon="@drawable/break_out"
+            android:title="@string/menu_break_out" />
+        <item
+            android:id="@+id/nav_premium"
+            android:icon="@drawable/premium"
+            android:title="@string/menu_premium" />
+        <item
+            android:id="@+id/nav_contactus"
+            android:icon="@drawable/ic_contact_us"
+            android:title="@string/menu_contact_us" />
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/signout"
+            android:title="@string/menu_logout" />
+    </group>
+</menu>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_traders_lounge">
+
+    <fragment
+        android:id="@+id/nav_traders_lounge"
+        android:name="com.hp.ali.stockmonk.ui.knowledge_base.Knowledge_base"
+        android:label="@string/menu_traders_lounge"
+        tools:layout="@layout/fragment_knowledge_base" />
+
+    <fragment
+        android:id="@+id/nav_intraday"
+        android:name="com.hp.ali.stockmonk.ui.Intraday.IntradayFragment"
+        android:label="@string/menu_intraday"
+        tools:layout="@layout/fragment_intraday" />
+
+    <fragment
+        android:id="@+id/nav_index"
+        android:name="com.hp.ali.stockmonk.ui.index.index"
+        android:label="@string/menu_index_position"
+        tools:layout="@layout/index" />
+
+    <fragment
+        android:id="@+id/nav_mission_monk"
+        android:name="com.hp.ali.stockmonk.ui.mission_monk.MissionMonkFragment"
+        android:label="@string/menu_mission_monk"
+        tools:layout="@layout/fragment_mission_monk" />
+
+    <fragment
+        android:id="@+id/nav_break_out"
+        android:name="com.hp.ali.stockmonk.ui.break_out.BreakOutFragment"
+        android:label="@string/menu_break_out"
+        tools:layout="@layout/fragment_break_out" />
+    <fragment
+        android:id="@+id/nav_premium"
+        android:name="com.hp.ali.stockmonk.ui.premium.PremiumFragment"
+        android:label="@string/menu_premium"
+        tools:layout="@layout/fragment_premium" />
+    <fragment
+        android:id="@+id/nav_contactus"
+        android:name="com.hp.ali.stockmonk.ui.contact_us.ContactusFragment"
+        android:label="@string/menu_contact_us"
+        tools:layout="@layout/fragment_contactus" />
+
+    <fragment
+        android:id="@+id/nav_logout"
+        android:name="com.hp.ali.stockmonk.ui.logout.LogoutFragment"
+        android:label="@string/menu_logout"
+        tools:layout="@layout/fragment_logout" />
+</navigation>

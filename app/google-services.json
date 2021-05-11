@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "774977508225",
+    "firebase_url": "https://stockmonk-4f113-default-rtdb.firebaseio.com",
+    "project_id": "stockmonk-4f113",
+    "storage_bucket": "stockmonk-4f113.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:774977508225:android:c40147b1bc579145774e80",
+        "android_client_info": {
+          "package_name": "com.hp.ali.stockmonk"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "774977508225-2c1h90c1s6ckbbn5i38lvv6d6p96cbig.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDuUWskYIP8EchczfJN4b8DW0Ttq0UaN3A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "774977508225-2c1h90c1s6ckbbn5i38lvv6d6p96cbig.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
