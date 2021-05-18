@@ -279,7 +279,7 @@ public class index extends Fragment {
             holder.txt_post_detail.setText(traders_post_list.get(position).getDescription());
 
 
-            if(Boolean.getBoolean(traders_post_list.get(position).getImgUrl())){
+            if(!traders_post_list.get(position).getImgUrl().isEmpty()){
                 String url =  traders_post_list.get(position).getImgUrl();
                 StorageReference storage =  FirebaseStorage.getInstance().getReferenceFromUrl(url);
                 storage.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {

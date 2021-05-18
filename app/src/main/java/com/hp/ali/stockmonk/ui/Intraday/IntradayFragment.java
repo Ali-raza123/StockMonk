@@ -27,7 +27,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -37,7 +36,6 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.hp.ali.stockmonk.R;
 import com.hp.ali.stockmonk.model.Posts;
-import com.hp.ali.stockmonk.ui.break_out.BreakOutFragment;
 import com.hp.ali.stockmonk.ui.knowledge_base.PostDetailActivity;
 import com.hp.ali.stockmonk.utils.SharedPreferencesManager;
 
@@ -161,12 +159,12 @@ public class IntradayFragment extends Fragment {
         return view;
     }
     public  class Intraday_Adapter extends RecyclerView.Adapter<Intraday_Adapter.ViewHolder>{
-        ArrayList<Posts> traders_post_list;
+        ArrayList<Posts> intraday_post_list;
         ArrayList<String> breakout_KeyList;
         Context context;
 
-        public Intraday_Adapter(ArrayList<Posts> traders_post_list,ArrayList<String> breakout_KeyList, Context context) {
-            this.traders_post_list = traders_post_list;
+        public Intraday_Adapter(ArrayList<Posts> intraday_post_list, ArrayList<String> breakout_KeyList, Context context) {
+            this.intraday_post_list = intraday_post_list;
             this.breakout_KeyList = breakout_KeyList;
             this.context =  context;
         }
@@ -228,11 +226,11 @@ public class IntradayFragment extends Fragment {
 
             holder.setIsRecyclable(false);
 
-            if(traders_post_list.get(position).getLikes()!=null){
-                holder.txt_total_likes.setText(traders_post_list.get(position).getLikes().toString());
+            if(intraday_post_list.get(position).getLikes()!=null){
+                holder.txt_total_likes.setText(intraday_post_list.get(position).getLikes().toString());
             }
-            if(traders_post_list.get(position).getFavorite()!=null){
-                holder.txt_total_fav.setText(traders_post_list.get(position).getFavorite().toString());
+            if(intraday_post_list.get(position).getFavorite()!=null){
+                holder.txt_total_fav.setText(intraday_post_list.get(position).getFavorite().toString());
             }
 
 
@@ -248,11 +246,11 @@ public class IntradayFragment extends Fragment {
                 }
             });
 
-            if(traders_post_list.get(position).getExplanation()!=null){
+            if(intraday_post_list.get(position).getExplanation()!=null){
                 holder.btn_why.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        String message =  traders_post_list.get(position).getExplanation().toString();
+                        String message =  intraday_post_list.get(position).getExplanation().toString();
                         Toast.makeText(context, ""+message, Toast.LENGTH_SHORT).show();
                     }
                 });
@@ -266,7 +264,7 @@ public class IntradayFragment extends Fragment {
                 public void onClick(View view) {
                     Intent sendIntent = new Intent();
                     sendIntent.setAction(Intent.ACTION_SEND_MULTIPLE);
-                    sendIntent.putExtra(Intent.EXTRA_TEXT, traders_post_list.get(position).getDescription());
+                    sendIntent.putExtra(Intent.EXTRA_TEXT, intraday_post_list.get(position).getDescription());
                     sendIntent.setType("text/plain");
                     Intent shareIntent = Intent.createChooser(sendIntent, null);
                     context.startActivity(shareIntent);
@@ -276,30 +274,33 @@ public class IntradayFragment extends Fragment {
 
 
 
-            holder.txt_post_title.setText(traders_post_list.get(position).getTitle());
-            holder.txt_post_detail.setText(traders_post_list.get(position).getDescription());
+            holder.txt_post_title.setText(intraday_post_list.get(position).getTitle());
+            holder.txt_post_detail.setText(intraday_post_list.get(position).getDescription());
 
 
-            if(Boolean.getBoolean(traders_post_list.get(position).getImgUrl())){
-                String url =  traders_post_list.get(position).getImgUrl();
-                StorageReference storage =  FirebaseStorage.getInstance().getReferenceFromUrl(url);
-                storage.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                    @Override
-                    public void onSuccess(Uri uri) {
-                        Glide.with(context).load(uri).placeholder(R.drawable.ic_transparent).into(holder.post_img);
+            if (intraday_post_list.get(position).getImgUrl() != null) {
+                if (!intraday_post_list.get(position).getImgUrl().isEmpty()) {
+                    String url = intraday_post_list.get(position).getImgUrl();
+                    StorageReference storage = FirebaseStorage.getInstance().getReferenceFromUrl(url);
+                    storage.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+                            Glide.with(context).load(uri).placeholder(R.drawable.ic_transparent).into(holder.post_img);
 
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(context, ""+e.toString(), Toast.LENGTH_SHORT).show();
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(context, "" + e.toString(), Toast.LENGTH_SHORT).show();
 
-                    }
-                });
-                holder.lyt_img.setVisibility(View.VISIBLE);
+                        }
+                    });
+                    holder.lyt_img.setVisibility(View.VISIBLE);
 
 
+                }
             }
+
 
 
             holder.img_like.setOnClickListener(new View.OnClickListener() {
@@ -368,7 +369,7 @@ public class IntradayFragment extends Fragment {
             String var = dateFormat.format(date);
             String currentTime = date1+" "+var;
 
-            String dateStart = traders_post_list.get(position).getDateTime();
+            String dateStart = intraday_post_list.get(position).getDateTime();
             String dateStop  = currentTime;
 
             SimpleDateFormat format = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
@@ -416,7 +417,7 @@ public class IntradayFragment extends Fragment {
 
         @Override
         public int getItemCount() {
-            return traders_post_list.size();
+            return intraday_post_list.size();
         }
 
         public  class ViewHolder extends RecyclerView.ViewHolder {

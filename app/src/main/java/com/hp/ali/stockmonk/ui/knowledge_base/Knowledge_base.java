@@ -65,6 +65,7 @@ public class Knowledge_base extends Fragment {
     static ProgressDialog progressDialog;
     static ProgressDialog progressDialog1;
     static String userUID;
+
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_knowledge_base, container, false);
@@ -107,8 +108,6 @@ public class Knowledge_base extends Fragment {
 
             }
         });
-
-
         return view;
     }
 
@@ -232,7 +231,7 @@ public class Knowledge_base extends Fragment {
             });
             holder.txt_post_title.setText(traders_post_list.get(position).getTitle());
             holder.txt_post_detail.setText(traders_post_list.get(position).getDescription());
-            if(Boolean.getBoolean(traders_post_list.get(position).getImgUrl())){
+            if(!traders_post_list.get(position).getImgUrl().isEmpty()){
                 String url =  traders_post_list.get(position).getImgUrl();
                 StorageReference storage =  FirebaseStorage.getInstance().getReferenceFromUrl(url);
                 storage.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
@@ -308,6 +307,7 @@ public class Knowledge_base extends Fragment {
 
                 }
             });
+
             Time t = new Time(Time.getCurrentTimezone());
             t.setToNow();
             String date1 = t.format("%d/%m/%y");
